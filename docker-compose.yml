@@ -1,0 +1,12 @@
+version: '3.7'
+
+services: 
+  post-service: 
+    image: post-service
+    container_name: post-service
+    working_dir: /app
+    build:
+        context: .
+        dockerfile: posts/develop.Dockerfile
+    ports:
+        - 4000:4000

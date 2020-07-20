@@ -10,3 +10,43 @@ services:
         dockerfile: posts/develop.Dockerfile
     ports:
         - 4000:4000
+
+  comments-service: 
+    image: comments-service
+    container_name: comments-service
+    working_dir: /app
+    build:
+        context: .
+        dockerfile: comments/develop.Dockerfile
+    ports:
+        - 4001:4001
+
+  query-service: 
+    image: query-service
+    container_name: query-service
+    working_dir: /app
+    build:
+        context: .
+        dockerfile: query/develop.Dockerfile
+    ports:
+        - 4002:4002
+
+  moderation-service: 
+    image: moderation-service
+    container_name: moderation-service
+    working_dir: /app
+    build:
+        context: .
+        dockerfile: moderation/develop.Dockerfile
+    ports:
+        - 4003:4003
+
+  event-bus-service: 
+    image: event-bus-service
+    container_name: event-bus-service
+    working_dir: /app
+    build:
+        context: .
+        dockerfile: event-bus/develop.Dockerfile
+    ports:
+        - 4005:4005

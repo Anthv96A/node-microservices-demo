@@ -11,12 +11,12 @@ const CommentList = ({ comments }) => {
 
 function renderedContent(comment) {
   if(comment.status === 'pending')
-    return { style: { color: 'blue'}, text: 'Awaiting approval' };
+    return { style: { color: 'blue' }, text: 'Awaiting approval' };
     
   if(comment.status === 'rejected')
-    return { style: { color: 'red'}, text: 'Rejected' };
+    return { style: { color: 'red' }, text: 'Rejected' };
 
-  return { style: { color: 'green'}, text: comment.content };
+  return { style: { color: 'green' }, text: comment.content };
 }
 
 export default CommentList;

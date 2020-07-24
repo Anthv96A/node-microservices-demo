@@ -16,3 +16,18 @@ spec:
       containers:
         - name: event-bus
           image: anthonyvestsage/event-bus-service:latest 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-service
+spec:
+  type: ClusterIP
+  selector: 
+      app: event-bus
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 4005
+      targetPort: 4005

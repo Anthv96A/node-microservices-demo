@@ -15,7 +15,10 @@ spec:
     spec: 
       containers:
         - name: posts
-          image: anthonyvestsage/post-service:latest 
+          image: anthonyvestsage/post-service:latest
+          env:
+            - name: EVENT_BUS_IP_ADDRESS
+              value: "event-bus-service"
 
 ---
 apiVersion: v1

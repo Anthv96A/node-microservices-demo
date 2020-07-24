@@ -15,7 +15,10 @@ spec:
     spec: 
       containers:
         - name: event-bus
-          image: anthonyvestsage/event-bus-service:latest 
+          image: anthonyvestsage/event-bus-service:latest
+          env:
+            - name: POSTS_IP_ADDRESS
+              value: "posts-clusterip-service"
 
 ---
 apiVersion: v1

@@ -12,7 +12,7 @@ services:
         - 4000:4000
 
   comments-service: 
-    image: comments-service:latest
+    image: anthonyvestsage/comments-service:latest
     container_name: comments-service
     working_dir: /app
     build:
@@ -22,7 +22,7 @@ services:
         - 4001:4001
 
   query-service: 
-    image: query-service:latest
+    image: anthonyvestsage/query-service:latest
     container_name: query-service
     working_dir: /app
     build:
@@ -32,7 +32,7 @@ services:
         - 4002:4002
 
   moderation-service: 
-    image: moderation-service:latest
+    image: anthonyvestsage/moderation-service:latest
     container_name: moderation-service
     working_dir: /app
     build:
@@ -42,7 +42,7 @@ services:
         - 4003:4003
 
   event-bus-service: 
-    image: event-bus-service:latest
+    image: anthonyvestsage/event-bus-service:latest
     container_name: event-bus-service
     working_dir: /app
     build:

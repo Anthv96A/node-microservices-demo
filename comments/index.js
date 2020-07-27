@@ -5,6 +5,9 @@ const express = require('express'),
     cors = require('cors'),
     axios = require('axios');
 
+const eventBusAddress = process.env.EVENT_BUS_SERVICE_SERVICE_HOST || 'localhost';
+const port = process.env.PORT || 4001;
+
 const postComments = {};
 
 app.use(bodyparser.json());    
@@ -23,7 +26,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
     postId in postComments ? postComments[postId].push(comment) : postComments[postId] = [comment];
     
-    await axios.post(`http://localhost:4005/events`, { type: 'CommentCreated', data: comment });
+    await axios.post(`http://${eventBusAddress}:4005/events`, { type: 'CommentCreated', data: comment });
 
     res.status(201).send(postComments);
 });
@@ -34,8 +37,8 @@ app.post('/events', async (req, res) => {
     res.send({ status: 'OK' });
 });
 
-app.listen(4001, () => {
-    console.log(`Listening on port 4001`);
+app.listen(port, () => { 
+    console.log(`Listening on port ${port}`);
 });
 
 async function onHandleEventAsync({ type, data }) {

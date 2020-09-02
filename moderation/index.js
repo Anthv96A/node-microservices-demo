@@ -3,6 +3,10 @@ const express = require('express'),
     bodyparser = require('body-parser'),
     axios = require('axios');
 
+const eventBusAddress = process.env.EVENT_BUS_SERVICE_SERVICE_HOST || 'localhost';
+const port = process.env.PORT || 4003;
+    
+
 app.use(bodyparser.json());    
 
 app.post('/events', async (req, res) => {
@@ -11,8 +15,8 @@ app.post('/events', async (req, res) => {
     res.status(200).send({ status: 'ok' });
 });
 
-app.listen(4003, () => {
-    console.log(`Listening on port 4003`);
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
 });
 
 async function handleDataAsync({ type, data }) {
@@ -20,7 +24,7 @@ async function handleDataAsync({ type, data }) {
         switch(type) {
             case 'CommentCreated':
                 const status = data.content.includes('oranges') ? 'rejected' : 'approved';
-                await axios.post(`http://localhost:4005/events`, { type: 'CommentModerated', data: { ...data, status } });
+                await axios.post(`http://${eventBusAddress}:4005/events`, { type: 'CommentModerated', data: { ...data, status } });
         }
     } catch {}
 }

@@ -6,6 +6,8 @@ const express = require('express'),
 app.use(bodyparser.json());
 
 const postsAddress = process.env.POSTS_SERVICE_SERVICE_HOST || 'localhost';
+const commentsAddress = process.env.COMMENTS_SERVICE_SERVICE_HOST || 'localhost';
+
 const port = process.env.PORT || 4005;
 
 const events = [];
@@ -17,7 +19,7 @@ app.post('/events', async (req, res) => {
     try {
         await Promise.all([
             axios.post(`http://${postsAddress}:4000/events`, event),
-            axios.post(`http://localhost:4001/events`, event),
+            axios.post(`http://${commentsAddress}:4001/events`, event),
             axios.post(`http://localhost:4002/events`, event),
             axios.post(`http://localhost:4003/events`, event)
         ]);

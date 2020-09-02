@@ -4,10 +4,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY ./query/package.json /app
+COPY package.json /app
 
 RUN npm install
 
-COPY ./query/ /app
+COPY ./ /app
 
 CMD ["node", "index.js"]

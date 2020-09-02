@@ -4,10 +4,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY ./event-bus/package.json /app
+COPY package.json /app
 
 RUN npm install
 
-COPY ./event-bus/ /app
+COPY ./ /app
 
 CMD ["node", "index.js"]

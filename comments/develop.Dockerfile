@@ -4,10 +4,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY ./comments/package.json /app
+COPY package.json /app
 
 RUN npm install
 
-COPY ./comments/ /app
+COPY ./ /app
 
 CMD ["node", "index.js"]

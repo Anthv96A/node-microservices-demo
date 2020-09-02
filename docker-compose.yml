@@ -1,6 +1,18 @@
 version: '3.7'
 
 services: 
+  react-dev:
+    image: node:14-alpine
+    container_name: client
+    working_dir: /app
+    volumes:
+        - ./client:/app
+    stdin_open: true
+    ports:
+        - 3000:3000
+        - 35729:35729
+    command: "npm run dev"
+
   post-service: 
     image: anthonyvestsage/post-service:latest
     container_name: post-service

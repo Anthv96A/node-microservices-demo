@@ -6,7 +6,6 @@ const express = require('express'),
 const eventBusAddress = process.env.EVENT_BUS_SERVICE_SERVICE_HOST || 'localhost';
 const port = process.env.PORT || 4003;
     
-
 app.use(bodyparser.json());    
 
 app.post('/events', async (req, res) => {

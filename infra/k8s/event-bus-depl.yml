@@ -19,6 +19,12 @@ spec:
           env:
             - name: POSTS_IP_ADDRESS
               value: "posts-clusterip-service"
+            - name: COMMENTS_IP_ADDRESS
+              value: "comments-clusterip-service"
+            - name: QUERY_IP_ADDRESS
+              value: "query-clusterip-service"
+            - name: MODERATION_IP_ADDRESS
+              value: "moderation-clusterip-service"
 
 ---
 apiVersion: v1

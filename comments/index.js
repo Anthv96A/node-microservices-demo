@@ -5,7 +5,7 @@ const express = require('express'),
     cors = require('cors'),
     axios = require('axios');
 
-const eventBusAddress = process.env.EVENT_BUS_SERVICE_SERVICE_HOST || 'localhost';
+const eventBusAddress = process.env.EVENT_BUS_IP_ADDRESS || 'localhost';
 const port = process.env.PORT || 4001;
 
 const postComments = {};

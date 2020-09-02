@@ -6,9 +6,9 @@ const express = require('express'),
 app.use(bodyparser.json());
 
 const postsAddress = process.env.POSTS_IP_ADDRESS || 'localhost';
-const commentsAddress = process.env.COMMENTS_SERVICE_SERVICE_HOST || 'localhost';
-const queryAddress = process.env.QUERY_SERVICE_SERVICE_HOST || 'localhost';
-const moderationAddress = process.env.MODERATION_SERVICE_SERVICE_HOST || 'localhost';
+const commentsAddress = process.env.COMMENTS_IP_ADDRESS || 'localhost';
+const queryAddress = process.env.QUERY_IP_ADDRESS || 'localhost';
+const moderationAddress = process.env.MODERATION_IP_ADDRESS || 'localhost';
 
 const port = process.env.PORT || 4005;
 const events = [];

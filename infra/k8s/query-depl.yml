@@ -16,6 +16,9 @@ spec:
       containers:
         - name: query
           image: anthonyvestsage/query-service:latest
+          env:
+            - name: EVENT_BUS_IP_ADDRESS
+              value: "event-bus-service"
 ---
 apiVersion: v1
 kind: Service

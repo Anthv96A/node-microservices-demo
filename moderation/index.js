@@ -3,7 +3,7 @@ const express = require('express'),
     bodyparser = require('body-parser'),
     axios = require('axios');
 
-const eventBusAddress = process.env.EVENT_BUS_SERVICE_SERVICE_HOST || 'localhost';
+const eventBusAddress = process.env.EVENT_BUS_IP_ADDRESS || 'localhost';
 const port = process.env.PORT || 4003;
     
 app.use(bodyparser.json());    

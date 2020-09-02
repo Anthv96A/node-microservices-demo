@@ -5,7 +5,7 @@ const express = require('express'),
 
 app.use(bodyparser.json());
 
-const postsAddress = process.env.POSTS_SERVICE_SERVICE_HOST || 'localhost';
+const postsAddress = process.env.POSTS_IP_ADDRESS || 'localhost';
 const commentsAddress = process.env.COMMENTS_SERVICE_SERVICE_HOST || 'localhost';
 const queryAddress = process.env.QUERY_SERVICE_SERVICE_HOST || 'localhost';
 const moderationAddress = process.env.MODERATION_SERVICE_SERVICE_HOST || 'localhost';
@@ -24,7 +24,9 @@ app.post('/events', async (req, res) => {
             axios.post(`http://${queryAddress}:4002/events`, event),
             axios.post(`http://${moderationAddress}:4003/events`, event)
         ]);
-    } catch {}
+    } catch(error) {
+        console.log(error);
+    }
     res.status(200).send({status: 'ok'});
 });
 

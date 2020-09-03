@@ -13,6 +13,17 @@ services:
         - 35729:35729
     command: "npm run dev"
 
+  react-client:
+    image: anthonyvestsage/react-client:latest
+    container_name: client
+    working_dir: /app
+    stdin_open: true
+    build: 
+        context: ./client
+        dockerfile: Dockerfile
+    ports: 
+        - 3000:3000
+        
   post-service: 
     image: anthonyvestsage/post-service:latest
     container_name: post-service

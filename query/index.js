@@ -54,10 +54,10 @@ function onHandleComment(postComments, data) {
     if(!(data.postId in postComments))
         throw new Error('Post not found');
 
-    let comments = postComments[data.postId].comments;    
+    const comments = postComments[data.postId].comments;    
 
     if(comments.some(c => c.id === data.id) === false) 
-        comments.push(data);
-    else 
-        comments = [...comments.map(c => (c.id !== data.id) ? c : { ...c, content: data.content, status: data.status }) ];
+        return comments.push(data);
+    
+    postComments[data.postId].comments = [...comments.map(c => (c.id !== data.id) ? c : { ...c, content: data.content, status: data.status }) ];
 }

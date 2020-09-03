@@ -50,7 +50,7 @@ async function onHandleEventAsync({ type, data }) {
 
             const comment = postComments[key].find(c => c.id === data.id);
 
-            await axios.post(`http://localhost:4005/events`, { type: 'CommentUpdated', data: { ...comment, status: data.status } });
+            await axios.post(`http://${eventBusAddress}:4005/events`, { type: 'CommentUpdated', data: { ...comment, status: data.status } });
         break;
     }
 }

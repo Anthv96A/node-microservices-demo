@@ -17,7 +17,7 @@ app.get('/posts', (req, res, next) => {
     res.status(200).send(posts)
 });
 
-app.post('/posts', async (req, res, next) => {
+app.post('/posts/create', async (req, res, next) => {
     const id = uuid();
     posts[id] = { id, ...req.body};
 

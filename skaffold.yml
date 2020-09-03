@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy: 
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: anthonyvestsage/react-client
+      context: client
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+    - image: anthonyvestsage/comments-service
+      context: comments
+      docker: 
+        dockerfile: develop.Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: anthonyvestsage/posts-service
+      context: posts
+      docker: 
+        dockerfile: develop.Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: anthonyvestsage/query-service
+      context: query
+      docker: 
+        dockerfile: develop.Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: anthonyvestsage/moderation-service
+      context: moderation
+      docker: 
+        dockerfile: develop.Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: anthonyvestsage/event-bus-service
+      context: event-bus
+      docker: 
+        dockerfile: develop.Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .

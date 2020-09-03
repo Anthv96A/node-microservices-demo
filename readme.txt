@@ -7,3 +7,8 @@ To navigate to the Ingress Controller routes, view ingress-service.yml, the rout
 FYI, etc/hosts file needs to be modified to trick kubernetes to route this URL
 127.0.0.1 posts.com
 
+
+Or to quickly fire up a dev environment with pod restart, use skaffold cmd
+    skaffold dev
+
+
